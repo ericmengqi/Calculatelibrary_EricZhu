@@ -5,31 +5,32 @@
  * Code for quadratic describer
  */
 public class Quadratic {
-	public static String quadDescriber (double a, double b, double c) {
-		//Provides equation in form of quadratic equation
+	public static String quadDescriber(double a, double b, double c) {
+		// Provides equation in form of quadratic equation
 		String describe = "Description of the graph of: \n" + "y = " + a + " x^2 + " + b + " x + " + c + "\n";
 		String direction = "";
-		//Determines if parabola opens up or down
+		// Determines if parabola opens up or down
 		if (a > 0) {
 			direction = "Opens: Up \n";
 		} else {
 			direction = "Opens: Down \n";
 		}
-		//Calculates the x-value for vertex
+		// Calculates the x-value for vertex
 		double xvalvertex = -b / (2 * a);
-		//Calculates the y-value for vertex
+		// Calculates the y-value for vertex
 		double yvalvertex = (a * (xvalvertex * xvalvertex)) + (b * xvalvertex) + c;
 		String vertex = "Vertex: (" + round2(xvalvertex) + ", " + round2(yvalvertex) + ")\n";
-		//Provides axis of symmetry
+		// Provides axis of symmetry
 		String aos = "Axis of Symmetry: " + round2(xvalvertex) + "\n";
-		//Provides the roots using quadForm from part 4
-		String roots = "x-intercept(s): " + quadForm(a,b,c) + "\n";
-		//Provides y-intercept
-		String intercept = "y-intercept: " + c + "\n";		
-		
+		// Provides the roots using quadForm from part 4
+		String roots = "x-intercept(s): " + quadForm(a, b, c) + "\n";
+		// Provides y-intercept
+		String intercept = "y-intercept: " + c + "\n";
+
 		return describe + direction + aos + vertex + roots + intercept;
 	}
-		/*
+
+	/*
 	 * This method returns the values of the discriminant from the coefficients of a
 	 * quadratic equation
 	 */
@@ -44,7 +45,7 @@ public class Quadratic {
 		double c = b;
 		return a = c / 100;
 	}
-	
+
 	// This method provides the square root of a double
 	public static double sqrt(double a) {
 		if (a < 0) {
@@ -58,7 +59,7 @@ public class Quadratic {
 		} while ((num1 - root) != 0);
 		return round2(root);
 	}
-	
+
 	/*
 	 * This method uses the coefficients of a quadratic equation and uses the
 	 * quadratic formula to approximate the real roots
@@ -82,6 +83,5 @@ public class Quadratic {
 			}
 		}
 	}
-	
-	}
 
+}
