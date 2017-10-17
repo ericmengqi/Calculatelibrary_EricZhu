@@ -1,58 +1,38 @@
-
-public class QuadraticClient {
-
-	/*
-	 * This method returns the values of the discriminant from the coefficients of a
-	 * quadratic equation
-	 */
-	public static double discriminant(double a, double b, double c) {
-		return b * b - 4 * a * c;
-	}
-
-	// This method rounds a double correctly to 2 decimal places.
-	public static double round2(double a) {
-		a = a * 100;
-		int b = (int) a;
-		double c = b;
-		return a = c / 100;
-	}
-	
-	// This method provides the square root of a double
-	public static double sqrt(double a) {
-		if (a < 0) {
-			throw new IllegalArgumentException("Input is negative, cannot take square root of negative number");
-		}
-		double num1;
-		double root = a / 2;
+/* Eric Zhu
+ * 10/13/17
+ * Part 5
+ * 1st Period
+ * Client for quadratic describer
+ */
+import java.util.Scanner;
+ public class QuadraticClient {
+	 //Creates new scanner in order to allow the user to add inputs
+		static Scanner userinput= new Scanner(System.in);
+		//String used later to ask if user is done 
+		static String response = "";
+public static void main(String[] args) {
+	//do/while loop to check if user is done
 		do {
-			num1 = root;
-			root = (num1 + (a / num1)) / 2.0;
-		} while ((num1 - root) != 0);
-		return round2(root);
-	}
-	
-	/*
-	 * This method uses the coefficients of a quadratic equation and uses the
-	 * quadratic formula to approximate the real roots
-	 */
-	public static String quadForm(int a, int b, int c) {
-		if (discriminant(a, b, c) < 0) {
-			return "no real roots";
-		} else if (discriminant(a, b, c) == 0) {
-			String root = round2(-b / (2 * a)) + "";
-			return root;
-		} else {
-			double root1 = (-b + sqrt(discriminant(a, b, c))) / (2 * a);
-			double root2 = (-b - sqrt(discriminant(a, b, c))) / (2 * a);
-			if (root1 < root2) {
-				String roots = round2(root1) + " and " + round2(root2);
-				return roots;
+		System.out.println ("Welcome to Quadratic Describer");
+		System.out.println("Provide values for coefficients a, b, and c");
+		System.out.println(" ");
+		//User input "a" value
+		System.out.print("a:");
+		double a = userinput.nextDouble();
+		//User input "b" value
+		System.out.print("b:");
+		double b = userinput.nextDouble();
+		//User input "c" value
+		System.out.print("c:");
+		double c = userinput.nextDouble();
+		System.out.println(); 
+		//Calls to quadDescriber in order to retrieve all info needed
+		System.out.println(Quadratic.quadDescriber(a, b, c));
+		System.out.println("Do you want to keep going? (Type \"quit\" to end)");
+		response = userinput.next();
+		//Terminates Program
+		} while(!response.equals("quit"));
+}}
 
-			} else {
-				String roots = round2(root1) + " and " + round2(root2);
-				return roots;
-			}
-		}
-	}
-	
-	}
+
+
